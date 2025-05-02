@@ -1,34 +1,23 @@
-# .github/workflows/docker-build-push.yml
-
-name: Build and Push Docker Image
+name: Build and Push Docker Image to Docker Hub
 
 on:
   push:
     branches:
-      - main  # or your working branch like 'master' or 'dev'
+      - main  # Trigger the workflow on pushes to the 'main' branch
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: hshekhar7/event  # Replace with your Docker Hub username and repository name
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout your repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Login to Docker Hub
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      # Build and tag the Docker image
-      - name: Build Docker image
-        run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/your-image-name:latest .
-
-      # Push the Docker image
-      - name: Push Docker image
-        run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/your-image-name:latest
+      - name: Log i
