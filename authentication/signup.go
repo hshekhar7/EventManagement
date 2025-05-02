@@ -68,6 +68,6 @@ func SignUp(c *gin.Context) {
 			return
 		}
 		log.Println(res)
-		c.JSON(http.StatusOK, "Event Manager inserted successfully")
+		c.JSON(http.StatusOK, "EventManager inserted successfully")
 	}
 }
