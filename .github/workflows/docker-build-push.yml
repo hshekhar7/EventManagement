@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: hshekhar7/event
+  IMAGE_NAME: hshekhar7/event_management
 
 jobs:
   build-and-push:
